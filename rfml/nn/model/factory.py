@@ -5,6 +5,9 @@ __author__ = "Bryse Flowers <brysef@vt.edu>"
 # Internal Includes
 from .cldnn import CLDNN
 from .cnn import CNN
+from .pgm import PGM
+from .target import Target
+from .substitute import Substitute
 
 
 def build_model(model_name: str, input_samples: int, n_classes: int):
@@ -39,5 +42,11 @@ def build_model(model_name: str, input_samples: int, n_classes: int):
         return CNN(input_samples=input_samples, n_classes=n_classes)
     elif model_name.upper() == "CLDNN":
         return CLDNN(input_samples=input_samples, n_classes=n_classes)
+    elif model_name.upper() == "SUBSTITUTE":
+        return Substitute(input_samples=input_samples, n_classes=n_classes)
+    elif model_name.upper() == "TARGET":
+        return Target(input_samples=input_samples, n_classes=n_classes)
+    elif model_name.upper() == "PGM":
+        return PGM(input_samples=input_samples, n_classes=n_classes)
     else:
         raise ValueError("Unknown neural network architecture ({})".format(model_name))
